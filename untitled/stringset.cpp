@@ -1,108 +1,106 @@
 #include "stringset.h"
-
-stringset::stringset()
-{
-#include <stdio.h>
-#include "stringset.h"
+#include <iostream>
 #include <fstream>
+#include <string>
 #include <vector>
-#include <math.h>
+#include <cmath>
 
 
-StringSet::StringSet() //liður 2,constructor
+using namespace std;
+
+StringSet::StringSet()
 {
 
 }
 
-ostream& operator<<(ostream& out, const StringSet& ss)
+string StringSet::at(int i) const
 {
-    for (unsigned int x = 0; x < ss.vektorinn.size(); x++)
-    {
-        out << ss.vektorinn[x] << " ";
-    }
-        return out;
+    string str;
+    str = items[i];
+    return str;
 }
 
-bool StringSet::contains(string strengur) const
+void StringSet::add(string addString) // þetta fall bætir við streng í mengið ef hann er ekki fyrir í menginu annars gerir fallið ekkert.
 {
-    for (unsigned int x = 0; x < vektorinn.size(); x++)
+    for(unsigned int i = 0; i < items.size(); i++)
     {
-        if (strengur == vektorinn[x])
-        {
-            return true;
-        }
+        if(at(i) == addString)
+            return;
     }
-    return false;
+    items.push_back(addString);
+
+
 }
 
-StringSet operator +(const StringSet& document1, const StringSet& document2)
+void StringSet::addFromFile(const char* fileName) // addfromfile tekur inn nafn á skjali. fallið opnar skjalið og les inn einn streng í einu og með hjálp add() passar að sama orð komi ekki tvisvar fyrir í menginu.
 {
-    StringSet Union;
+    ifstream is;
+    string next;
+    is.open(fileName);
 
-    for (unsigned int x = 0; x < document1.vektorinn.size(); x++)
+    while(is >> next)
     {
-        if(!Union.contains (document1.vektorinn[x]))
-        {
-            Union.vektorinn.push_back(document1.vektorinn[x]);
-        }
+        add(next);
     }
-    for (unsigned int x = 0; x < document2.vektorinn.size(); x++)
-    {
-        if(!Union.contains (document2.vektorinn[x]))
-        {
-            Union.vektorinn.push_back(document2.vektorinn[x]);
-        }
-    }
-    return Union;
-
-}
-StringSet operator *(const StringSet& document1,const StringSet& document2)
-{
-    StringSet newSet;
-    for (unsigned int x = 0; x < document1.vektorinn.size(); x++)
-    {
-        if (document2.contains(document1.vektorinn.at(x)))
-        {
-            newSet.vektorinn.push_back(document1.vektorinn[x]);
-        }
-    }
-   return newSet;
+    is.close();
 }
 
-void StringSet:: addDocument (string nameOfDocument)
+int StringSet::numberOfStrings() const
 {
-    ifstream document;
-    string temp;
-    document.open(nameOfDocument.c_str());
-
-    if(document.is_open())
-    {
-        while(document >> temp)
-        {
-            vektorinn.push_back(temp);
-        }
-        document.close();
-    }
+    return items.size();
 }
 
-double similarity (const StringSet& document1, const StringSet& document2)
+double StringSet::similarity(const StringSet& s)
 {
-    double sim;
-    StringSet sum = document1 * document2;
-    sim = sum.size() / (sqrt(document1.size()) * sqrt(document2.size()));
+    double sim,nefnari,teljari;
+    StringSet snidmengi = (*this) * (s);
+    teljari = snidmengi.numberOfStrings();
+    nefnari = sqrt(numberOfStrings()) * sqrt(s.numberOfStrings());
+    sim = teljari / nefnari;
 
     return sim;
 }
 
-
-int StringSet::size() const
+StringSet operator+(const StringSet& s1, const StringSet& s2)
 {
-    return vektorinn.size();
+        StringSet sammengi;
+        for(int i = 0; i < s1.numberOfStrings(); i++)
+        {
+            sammengi.add(s1.at(i));
+        }
+        for(int i = 0; i < s2.numberOfStrings(); i++)
+        {
+            sammengi.add(s2.at(i));
+        }
+        return sammengi;
+}
+
+StringSet operator*(const StringSet& s1, const StringSet& s2)
+{
+    StringSet snidmengi;
+    for(int i = 0; i < s1.numberOfStrings(); i++)
+    {
+        for(int j = 0; j < s2.numberOfStrings(); j++)
+        {
+            if(s1.at(i) == s2.at(j))
+            {
+                snidmengi.add(s1.at(i));
+            }
+        }
+    }
+    return snidmengi;
+
+}
+
+ostream& operator<<(ostream& out, const StringSet& s)
+{
+    for(unsigned int i = 0; i < s.items.size(); i++)
+    {
+        out << s.items[i] << " ";
+    }
+    return out;
+
 }
 
 
-
-
-
-}
 

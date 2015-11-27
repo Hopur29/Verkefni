@@ -1,28 +1,35 @@
-#include <QCoreApplication>
 #include <iostream>
-#include <cstdlib>
-#include <fstream>
 #include "stringset.h"
-using namespace std;
 
+using namespace std;
 
 
 int main()
 {
-    StringSet setA, setB, setC;
-    setA.addDocument("doc1.txt");
-    setB.addDocument("doc2.txt");
-    setC.addDocument("query.txt");
 
-    StringSet Union = setA + setB;
-    cout << "Doc1: " << setA << endl;
-    cout << "Doc2: " << setB << endl;
+    StringSet s1;
+    s1.addFromFile("doc1.txt");
+    cout << "Doc1: " << s1 << endl;
+
+    StringSet s2;
+    s2.addFromFile("doc2.txt");
+    cout << "Doc2: "<< s2 << endl;
+
+    StringSet Union = s1 + s2;
     cout << "Union: " << Union << endl;
-    cout << "Query: " << setC << endl;
-    cout << "Query size: " << setC.size() << endl;
-    cout << "Found in Union: " << (Union*setC).size() << endl;
-    cout << "Similarity to doc1: " << similarity(setC,setA) << endl;
-    cout << "Similarity to doc2: " << similarity(setC,setB) << endl;
+
+     StringSet query;
+     query.addFromFile("query.txt");
+     cout << "Query: " << query << endl;
+
+
+     cout << "Query size: " << query.numberOfStrings() << endl;
+
+     StringSet snidmengiQueryOgUnion = query * Union;
+     cout << "Found in Union: " << snidmengiQueryOgUnion.numberOfStrings() << endl;
+
+     cout << "Similarity to doc1: " << query.similarity(s1) << endl;
+     cout << "Similarity to doc2: " << query.similarity(s2);
 
 
     return 0;
