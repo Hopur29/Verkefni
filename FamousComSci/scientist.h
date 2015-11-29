@@ -12,12 +12,12 @@ public:
     // Reads in scientist information in CSV-format (using ';' as delimiter).
     friend istream& operator>> (istream& out, Scientist& s);
     friend ostream& operator<< (ostream& out, const Scientist& s);
+    string toFileFormat();
 private:
     string name;
     string sex;
     string birthday;
     string death;
-
 };
 
 

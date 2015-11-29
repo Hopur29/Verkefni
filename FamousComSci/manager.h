@@ -20,6 +20,7 @@ public:
     void init();
 private:
     vector<Scientist> vec;
+    void writeAllToFile();
 
 };
 

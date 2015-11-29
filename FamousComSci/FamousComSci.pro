@@ -17,6 +17,5 @@ HEADERS += \
     scientist.h \
     manager.h
 
-DISTFILES += \
-    data.txt
+DISTFILES +=
 
