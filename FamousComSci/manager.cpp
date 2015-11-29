@@ -76,20 +76,20 @@ string Scientist::getName(){
 void Manager::search()
 {
     string name;
+    bool flag = false;
 
     cout << "Enter the name of the scientist you want to find: ";
     cin >> name;
 
     for(unsigned int i = 0; i < vec.size(); i++){
         if(vec[i].getName() == name){
+            flag = true;
             cout << vec[i];
-            break;
         }
-        else if(vec[i].getName() != name){
-            cout << "there is no scientist named " << name
-                 << " in this file." << endl;
-            break;
-        }
+    }
+    if(flag == false){
+        cout << "there is no scientist named " << name
+             << " in this file." << endl;
     }
 }
 
