@@ -3,6 +3,7 @@
 #include <iostream>
 #include "manager.h"
 
+
 Menu::Menu()
 {
     manager.init();
@@ -66,14 +67,13 @@ void Menu::print()
 
 void Menu::remove()
 {
-    string name;
-    getline(cin, name);
-    manager.remove(name);
+
+    manager.remove();
 }
 
 void Menu::search()
 {
-    string name;
-    getline(cin, name);
-    manager.search(name);
+
+
+    manager.search();
 }

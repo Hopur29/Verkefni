@@ -1,6 +1,7 @@
 #include "manager.h"
 #include <fstream>
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -49,18 +50,46 @@ void Manager::print()
 {
     for(unsigned int i = 0; i < vec.size(); i++)
     {
-        cout << i << ". " << vec[i];
+        cout << i << "." << endl;
+        cout << vec[i];
     }
 }
 
-void Manager::remove(string name)
+void Manager::remove()
 {
-    cout << name;
-    vec.erase()
+    unsigned int i;
+    cout << "insert the number of the scientist you would like to remove: ";
+    cin >> i;
+    if(i < vec.size())
+    {
+    vec.erase(vec.begin() + i);
+    writeAllToFile();
+    }
+    else{
+        cout << "there is no scientist labeled with that number." << endl;
+    }
+}
+string Scientist::getName(){
+    return name;
 }
 
-void Manager::search(string name)
+void Manager::search()
 {
-    cout << name;
+    string name;
+
+    cout << "Enter the name of the scientist you want to find: ";
+    cin >> name;
+
+    for(unsigned int i = 0; i < vec.size(); i++){
+        if(vec[i].getName() == name){
+            cout << vec[i];
+            break;
+        }
+        else if(vec[i].getName() != name){
+            cout << "there is no scientist named " << name
+                 << " in this file." << endl;
+            break;
+        }
+    }
 }
 

@@ -13,6 +13,7 @@ public:
     friend istream& operator>> (istream& out, Scientist& s);
     friend ostream& operator<< (ostream& out, const Scientist& s);
     string toFileFormat();
+    string getName();
 private:
     string name;
     string sex;

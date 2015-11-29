@@ -2,6 +2,9 @@
 #define MANAGER_H
 #include <vector>
 #include "scientist.h"
+#include <fstream>
+#include <iostream>
+#include <algorithm>
 
 class Manager
 {
@@ -13,9 +16,9 @@ public:
     // Prints all computer scientists in the system
     void print();
     // removes the specified scientist from the manager
-    void remove(string name);
+    void remove();
     // searches for a specified scientist
-    void search(string name);
+    void search();
     //initialize manager
     void init();
 private:
