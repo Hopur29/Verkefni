@@ -52,6 +52,7 @@ void Manager::print()
     {
         cout << i << "." << endl;
         cout << vec[i];
+        cout << endl;
     }
 }
 

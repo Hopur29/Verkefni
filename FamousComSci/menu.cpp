@@ -24,6 +24,7 @@ void Menu::start()
         cout << "* 5. Exit                 *" << endl;
         cout << "***************************" << endl;
 
+
         cin >> choice;
 
         switch(choice)
