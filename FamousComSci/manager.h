@@ -16,8 +16,11 @@ public:
     void remove(string name);
     // searches for a specified scientist
     void search(string name);
+    //initialize manager
+    void init();
 private:
     vector<Scientist> vec;
+
 };
 
 #endif // MANAGER_H

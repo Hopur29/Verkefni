@@ -2,6 +2,12 @@
 #include <fstream>
 #include <iostream>
 #include "manager.h"
+
+Menu::Menu()
+{
+    manager.init();
+}
+
 void Menu::start()
 {
     int choice(0);
@@ -13,7 +19,8 @@ void Menu::start()
         cout << "* 1. add new legend.      *" << endl;
         cout << "* 2. known legends        *" << endl;
         cout << "* 3. remove legend        *" << endl;
-        cout << "* 4. Exit                 *" << endl;
+        cout << "* 4. search               *" << endl;
+        cout << "* 5. Exit                 *" << endl;
         cout << "***************************" << endl;
 
         cin >> choice;
@@ -40,7 +47,7 @@ void Menu::start()
             default:
                 cout << "plz choose a valid number from 1 to 3" << endl;
         }
-    }while(choice != 3);
+    }while(choice != 5);
 
 }
 

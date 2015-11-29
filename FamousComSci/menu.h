@@ -7,6 +7,7 @@
 class Menu
 {
 public:
+    Menu();
     void start();
     void print();
     void remove();
