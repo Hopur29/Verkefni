@@ -74,6 +74,8 @@ void Manager::remove()
    string name;
    bool flag = false;
 
+   print();
+
    cout << "insert the name of the scientist you would like to remove: ";
    cin >> name;
     for(unsigned int i = 0; i < vec.size(); i++){
@@ -81,6 +83,7 @@ void Manager::remove()
             vec.erase(vec.begin() + i);
             flag = true;
             writeAllToFile();
+            cout << name << " has been removed." << endl;
         }
     }
     if(flag == false){
@@ -112,4 +115,5 @@ void Manager::search()
              << " in this file." << endl;
     }
 }
+
 
