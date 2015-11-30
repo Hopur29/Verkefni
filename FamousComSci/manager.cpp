@@ -55,10 +55,12 @@ void Manager::print()
         cout << endl;
     }
 }
-
+string Scientist::getName(){
+    return name;
+}
 void Manager::remove()
 {
-    unsigned int i;
+   /* unsigned int i;
     cout << "insert the number of the scientist you would like to remove: ";
     cin >> i;
     if(i < vec.size())
@@ -68,11 +70,25 @@ void Manager::remove()
     }
     else{
         cout << "there is no scientist labeled with that number." << endl;
+    }*/
+   string name;
+   bool flag = false;
+
+   cout << "insert the name of the scientist you would like to remove: ";
+   cin >> name;
+    for(unsigned int i = 0; i < vec.size(); i++){
+        if(vec[i].getName() == name){
+            vec.erase(vec.begin() + i);
+            flag = true;
+            writeAllToFile();
+        }
+    }
+    if(flag == false){
+        cout << "there is no scientist named " << name
+             << " in this file." << endl;
     }
 }
-string Scientist::getName(){
-    return name;
-}
+
 
 void Manager::search()
 {
@@ -81,11 +97,14 @@ void Manager::search()
 
     cout << "Enter the name of the scientist you want to find: ";
     cin >> name;
+    cout << endl;
 
     for(unsigned int i = 0; i < vec.size(); i++){
         if(vec[i].getName() == name){
             flag = true;
+            cout << i << ". " << endl;
             cout << vec[i];
+            cout << endl;
         }
     }
     if(flag == false){
