@@ -10,12 +10,14 @@ TEMPLATE = app
 SOURCES += main.cpp \
     menu.cpp \
     scientist.cpp \
-    manager.cpp
+    manager.cpp \
+    data.cpp
 
 HEADERS += \
     menu.h \
     scientist.h \
-    manager.h
+    manager.h \
+    data.h
 
 DISTFILES +=
 

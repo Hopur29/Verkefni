@@ -6,7 +6,7 @@
 
 Menu::Menu()
 {
-    manager.init();
+
 }
 
 void Menu::start()

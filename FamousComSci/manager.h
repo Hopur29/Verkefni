@@ -19,11 +19,9 @@ public:
     void remove();
     // searches for a specified scientist
     void search();
-    //initialize manager
-    void init();
 private:
-    vector<Scientist> vec;
-    void writeAllToFile();
+    Data data;
+
 
 };
 

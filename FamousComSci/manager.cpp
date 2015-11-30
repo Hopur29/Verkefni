@@ -7,60 +7,26 @@ using namespace std;
 
 Manager::Manager()
 {
-
+    data.init();
 }
 
-void Manager::init()
-{
-    ifstream read;
-    read.open("data.txt");
-    vector<Scientist> vec;
-    if (read.is_open())
-    {
-        Scientist s;
-        while(read >> s){
-            add(s);
-        }
-    }
-    else
-    {
-        cout << "There is no scientist on file." << endl;
-    }
-    read.close();
-}
 
 void Manager::add(Scientist s)
 {    
-    vec.push_back(s);
-    writeAllToFile();
-}
-
-void Manager::writeAllToFile()
-{
-    ofstream write;
-    write.open("data.txt");
-    for(unsigned int i = 0; i < vec.size(); i++)
-    {
-        write << vec[i].toFileFormat() << endl;
-    }
-    write.close();
+    data.add(s);
 }
 
 void Manager::print()
 {
-    for(unsigned int i = 0; i < vec.size(); i++)
-    {
-        cout << i << "." << endl;
-        cout << vec[i];
-        cout << endl;
-    }
+    data.print();
 }
 string Scientist::getName(){
     return name;
 }
 void Manager::remove()
 {
-   /* unsigned int i;
+
+    /* unsigned int i;
     cout << "insert the number of the scientist you would like to remove: ";
     cin >> i;
     if(i < vec.size())
