@@ -14,6 +14,7 @@ public:
     friend ostream& operator<< (ostream& out, const Scientist& s);
     string toFileFormat();
     string getName();
+    string getSex();
 private:
     string name;
     string sex;

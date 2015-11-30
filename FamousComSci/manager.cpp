@@ -1,7 +1,6 @@
 #include "manager.h"
 #include <fstream>
 #include <iostream>
-#include <algorithm>
 
 using namespace std;
 
@@ -55,9 +54,16 @@ void Manager::print()
         cout << endl;
     }
 }
-string Scientist::getName(){
+
+string Scientist::getName()
+{
     return name;
 }
+string Scientist::getSex()
+{
+    return sex;
+}
+
 void Manager::remove()
 {
     int v;
@@ -106,7 +112,6 @@ void Manager::remove()
      }
 }
 
-
 void Manager::search()
 {
     string name;
@@ -124,10 +129,9 @@ void Manager::search()
 
         }
     }
+
     if(flag == false){
         cout << "there is no scientist named " << name
              << " in this file." << endl;
     }
 }
-
-
