@@ -60,36 +60,48 @@ string Scientist::getName(){
 }
 void Manager::remove()
 {
-   /* unsigned int i;
-    cout << "insert the number of the scientist you would like to remove: ";
-    cin >> i;
-    if(i < vec.size())
-    {
-    vec.erase(vec.begin() + i);
-    writeAllToFile();
-    }
-    else{
-        cout << "there is no scientist labeled with that number." << endl;
-    }*/
-   string name;
-   bool flag = false;
+    int v;
+    cout << "would you like to remove by name or by number? " << endl;
+    cout << "press 1 for name" << endl;
+    cout << "press 2 for number" << endl;
+    cin >> v;
 
-   print();
 
-   cout << "insert the name of the scientist you would like to remove: ";
-   cin >> name;
-    for(unsigned int i = 0; i < vec.size(); i++){
-        if(vec[i].getName() == name){
-            vec.erase(vec.begin() + i);
-            flag = true;
-            writeAllToFile();
-            cout << name << " has been removed." << endl;
+    if(v == 1){
+       string name;
+       bool flag = false;
+
+       print();
+
+       cout << "insert the name of the scientist you would like to remove: ";
+       cin >> name;
+        for(unsigned int i = 0; i < vec.size(); i++){
+            if(vec[i].getName() == name){
+                vec.erase(vec.begin() + i);
+                flag = true;
+                writeAllToFile();
+                cout << name << " has been removed." << endl;
+            }
         }
-    }
-    if(flag == false){
-        cout << "there is no scientist named " << name
-             << " in this file." << endl;
-    }
+            if(flag == false){
+            cout << "there is no scientist named " << name
+                 << " in this file." << endl;
+            }
+     }
+
+    else if(v == 2){
+        unsigned int i;
+         cout << "insert the number of the scientist you would like to remove: ";
+         cin >> i;
+         if(i < vec.size())
+         {
+             vec.erase(vec.begin() + i);
+             writeAllToFile();
+         }
+         else{
+             cout << "there is no scientist labeled with that number." << endl;
+         }
+     }
 }
 
 
