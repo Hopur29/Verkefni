@@ -62,8 +62,9 @@ void Manager::remove()
 {
     int v;
     cout << "would you like to remove by name or by number? " << endl;
-    cout << "press 1 for name" << endl;
-    cout << "press 2 for number" << endl;
+    cout << "press 1 for name." << endl;
+    cout << "press 2 for number." << endl;
+    cout << "any other number returns to menu." << endl;
     cin >> v;
 
 
@@ -98,8 +99,9 @@ void Manager::remove()
              vec.erase(vec.begin() + i);
              writeAllToFile();
          }
-         else{
-             cout << "there is no scientist labeled with that number." << endl;
+
+         else if(v != 1 || v != 2){
+             cout << "Returning to menu";
          }
      }
 }
