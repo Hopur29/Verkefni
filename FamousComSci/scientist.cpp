@@ -1,6 +1,7 @@
 #include "scientist.h"
 #include <string>
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -43,4 +44,28 @@ string Scientist::getBirthday()
 string Scientist::getDeath()
 {
     return death;
+}
+
+// Sort Container by name
+bool sortByName(const Scientist &lhs, const Scientist &rhs)
+{
+    return lhs.name < rhs.name;
+}
+
+// Sort Container by sex
+bool sortBySex(const Scientist &lhs, const Scientist &rhs)
+{
+    return lhs.sex < rhs.sex;
+}
+
+// Sort Container by birthday
+bool sortByBirthday(const Scientist &lhs, const Scientist &rhs)
+{
+    return lhs.birthday < rhs.birthday;
+}
+
+// Sort Container by day of death
+bool sortByDeath(const Scientist &lhs, const Scientist &rhs)
+{
+    return lhs.death < rhs.death;
 }

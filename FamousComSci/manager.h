@@ -22,6 +22,10 @@ public:
     void remove_by_nr(unsigned int nr);
     // searches for a specified scientist
     void search(int v);
+    void sortBirthday();
+    void sortDeath();
+    void sortSex();
+    void sortName();
 private:
     Data file;
 };

@@ -123,3 +123,13 @@ void Data::getbyDeath(string death)
         }
     }
 }
+
+vector<Scientist> Data::getVector()
+{
+    return vec;
+}
+
+void Data::setVector(vector<Scientist> newVec)
+{
+    vec = newVec;
+}

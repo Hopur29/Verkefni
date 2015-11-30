@@ -17,6 +17,14 @@ public:
     string getSex();
     string getBirthday();
     string getDeath();
+    // Sort Container by name
+    friend bool sortByName(const Scientist &lhs, const Scientist &rhs);
+    // Sort Container by sex
+    friend bool sortBySex(const Scientist &lhs, const Scientist &rhs);
+    // Sort Container by birthday
+    friend bool sortByBirthday(const Scientist &lhs, const Scientist &rhs);
+    // Sort Container by day of death
+    friend bool sortByDeath(const Scientist &lhs, const Scientist &rhs);
 private:
     string name;
     string sex;

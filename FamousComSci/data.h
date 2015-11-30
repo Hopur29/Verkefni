@@ -16,7 +16,9 @@ public:
     void getbySex(string sex);
     void getbyBirthday(string birthday);
     void getbyDeath(string death);
+    vector<Scientist> getVector();
     void search();
+    void setVector(vector<Scientist> newVec);
 private:
     vector<Scientist> vec;
     void writeAllToFile();

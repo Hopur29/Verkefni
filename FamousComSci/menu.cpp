@@ -48,7 +48,7 @@ void Menu::start()
                 choice = MAX;
                 break;
             default:
-                cout << "plz choose a valid number from 1 to 3" << endl;
+                cout << "plz choose a valid number from 1 to 5" << endl;
         }
     }while(choice != 5);
 
@@ -64,7 +64,32 @@ void Menu::addScientist(istream& in)
 
 void Menu::print()
 {
-    manager.print();
+    int v;
+    cout << "sorting choices" << endl;
+    cout << "1. by name." << endl;
+    cout << "2. by sex." << endl;
+    cout << "3. by birthday. " << endl;
+    cout << "4. by day of death. " << endl;
+    cin >> v;
+    switch(v)
+    {
+        case 1:
+            manager.sortName();
+            manager.print();
+            break;
+        case 2:
+            manager.sortSex();
+            manager.print();
+            break;
+        case 3:
+            manager.sortBirthday();
+            manager.print();
+            break;
+        case 4:
+            manager.sortDeath();
+            manager.print();
+            break;
+    }
 }
 
 void Menu::remove()
@@ -72,7 +97,6 @@ void Menu::remove()
     int v;
     cout << "would you like to remove by name or by number? " << endl;
     cout << "press 1 for name." << endl;
-    cout << "press 2 for number." << endl;
     cout << "any other number returns to menu." << endl;
     cin >> v;
 

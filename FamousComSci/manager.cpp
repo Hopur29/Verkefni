@@ -3,6 +3,7 @@
 #include <iostream>
 #include <algorithm>
 #include "data.h"
+#include <vector>
 
 using namespace std;
 
@@ -75,4 +76,32 @@ void Manager::search(int v)
         cout << endl;
         file.getbyDeath(death);
     }
+}
+
+void Manager::sortBirthday()
+{
+    vector<Scientist> vec = file.getVector();
+    sort(vec.begin(), vec.end(), sortByBirthday);
+    file.setVector(vec);
+}
+
+void Manager::sortDeath()
+{
+    vector<Scientist> vec = file.getVector();
+    sort(vec.begin(), vec.end(), sortByDeath);
+    file.setVector(vec);
+}
+
+void Manager::sortSex()
+{
+    vector<Scientist> vec = file.getVector();
+    sort(vec.begin(), vec.end(), sortBySex);
+    file.setVector(vec);
+}
+
+void Manager::sortName()
+{
+    vector<Scientist> vec = file.getVector();
+    sort(vec.begin(), vec.end(), sortByName);
+    file.setVector(vec);
 }
