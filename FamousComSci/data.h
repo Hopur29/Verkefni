@@ -12,6 +12,11 @@ public:
     void print();
     bool remove(string name);
     bool remove_by_nr(unsigned int nr);
+    void getbyName(string name);
+    void getbySex(string sex);
+    void getbyBirthday(string birthday);
+    void getbyDeath(string death);
+    void search();
 private:
     vector<Scientist> vec;
     void writeAllToFile();

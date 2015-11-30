@@ -42,7 +42,7 @@ void Menu::start()
                 remove();
                 break;
             case 4:
-               // search();
+               search();
                 break;
             case 5:
                 choice = MAX;
@@ -97,10 +97,19 @@ void Menu::remove()
 
 
 }
-/*
+
 void Menu::search()
 {
-    manager.search();
+    int v;
+       cout << "would you like to search by name or by number? " << endl;
+       cout << "press 1 for name." << endl;
+       cout << "press 2 for sex." << endl;
+       cout << "press 3 for birthday." << endl;
+       cout << "press 4 for death." << endl;
+       cout << "any other number returns to menu." << endl;
+       cin >> v;
+
+    manager.search(v);
 }
-*/
+
 

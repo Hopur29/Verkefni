@@ -76,7 +76,50 @@ bool Data::remove_by_nr(unsigned int nr)
         writeAllToFile();
         return true;
     }
-    else{
+
+    else
+    {
         return false;
+    }
+}
+
+void Data::getbyName(string name)
+{
+    for(unsigned int i = 0; i < vec.size(); i++)
+    {
+        if(vec[i].getName() == name){
+            cout << i << ". " << endl;
+            cout << vec[i] << endl;
+        }
+    }
+}
+void Data::getbySex(string sex)
+{
+    for(unsigned int i = 0; i < vec.size(); i++)
+    {
+        if(vec[i].getSex() == sex){
+            cout << i << ". " << endl;
+            cout << vec[i] << endl;
+        }
+    }
+}
+void Data::getbyBirthday(string birth)
+{
+    for(unsigned int i = 0; i < vec.size(); i++)
+    {
+        if(vec[i].getBirthday() == birth){
+            cout << i << ". " << endl;
+            cout << vec[i] << endl;
+        }
+    }
+}
+void Data::getbyDeath(string death)
+{
+    for(unsigned int i = 0; i < vec.size(); i++)
+    {
+        if(vec[i].getDeath() == death){
+            cout << i << ". " << endl;
+            cout << vec[i] << endl;
+        }
     }
 }

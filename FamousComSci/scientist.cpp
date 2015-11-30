@@ -36,3 +36,11 @@ string Scientist::getSex()
 {
     return sex;
 }
+string Scientist::getBirthday()
+{
+    return birthday;
+}
+string Scientist::getDeath()
+{
+    return death;
+}

@@ -15,6 +15,8 @@ public:
     string toFileFormat();
     string getName();
     string getSex();
+    string getBirthday();
+    string getDeath();
 private:
     string name;
     string sex;

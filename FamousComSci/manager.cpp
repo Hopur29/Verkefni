@@ -47,28 +47,32 @@ void Manager::remove_by_nr(unsigned int nr)
     }
 }
 
-/*
-void Manager::search()
+
+void Manager::search(int v)
 {
-    string name;
-    bool flag = false;
-
-    cout << "Enter the name of the scientist you want to find: ";
-    cin >> name;
-    cout << endl;
-
-    for(unsigned int i = 0; i < vec.size(); i++){
-        if(vec[i].getName() == name){
-            flag = true;
-            cout << i << ". " << endl;
-            cout << vec[i] << endl;
-        }
+    string name, sex, birthday, death;
+    if(v == 1){
+        cout << "type the name of the scientist you want to find: ";
+        cin >> name;
+        cout << endl;
+        file.getbyName(name);
     }
-    if(flag == false){
-        cout << "there is no scientist named " << name
-             << " in this file." << endl;
+    else if(v == 2){
+        cout << "enter the sex of the scientist you want to find: ";
+        cin >> sex;
+        cout << endl;
+        file.getbySex(sex);
+    }
+    else if(v == 3){
+        cout << "enter the birthday of the scientist you want to find: ";
+        cin >> birthday;
+        cout << endl;
+        file.getbyBirthday(birthday);
+    }
+    else if(v == 4){
+        cout << "enter the day of death of the scientist you want to find: ";
+        cin >> death;
+        cout << endl;
+        file.getbyDeath(death);
     }
 }
-*/
-
-

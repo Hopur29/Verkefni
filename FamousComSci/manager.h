@@ -21,7 +21,7 @@ public:
     // remove the specified scientist by number
     void remove_by_nr(unsigned int nr);
     // searches for a specified scientist
-    //void search();
+    void search(int v);
 private:
     Data file;
 };
