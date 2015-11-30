@@ -2,63 +2,52 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include "data.h"
 
 using namespace std;
 
 Manager::Manager()
 {
-    data.init();
+    file.init();
 }
-
 
 void Manager::add(Scientist s)
 {    
-    data.add(s);
+    file.add(s);
 }
 
 void Manager::print()
 {
-    data.print();
+    cout << "you should print here" << endl;
 }
-string Scientist::getName(){
-    return name;
-}
-void Manager::remove()
+
+void Manager::remove(string name)
 {
-
-    /* unsigned int i;
-    cout << "insert the number of the scientist you would like to remove: ";
-    cin >> i;
-    if(i < vec.size())
+    if(file.remove(name))
     {
-    vec.erase(vec.begin() + i);
-    writeAllToFile();
+        cout << name << " has been removed." << endl;
     }
-    else{
-        cout << "there is no scientist labeled with that number." << endl;
-    }*/
-   string name;
-   bool flag = false;
-
-   print();
-
-   cout << "insert the name of the scientist you would like to remove: ";
-   cin >> name;
-    for(unsigned int i = 0; i < vec.size(); i++){
-        if(vec[i].getName() == name){
-            vec.erase(vec.begin() + i);
-            flag = true;
-            writeAllToFile();
-            cout << name << " has been removed." << endl;
-        }
-    }
-    if(flag == false){
+    else
+    {
         cout << "there is no scientist named " << name
              << " in this file." << endl;
     }
 }
 
+void Manager::remove_by_nr(unsigned int nr)
+{
+    if(file.remove_by_nr(nr))
+    {
+        cout << "Scientist nr " << nr << " has been removed." << endl;
+    }
+    else
+    {
+        cout << "there is no scientist nr " << nr
+             << " in this file." << endl;
+    }
+}
 
+/*
 void Manager::search()
 {
     string name;
@@ -73,7 +62,6 @@ void Manager::search()
             flag = true;
             cout << i << ". " << endl;
             cout << vec[i] << endl;
-
         }
     }
     if(flag == false){
@@ -81,5 +69,5 @@ void Manager::search()
              << " in this file." << endl;
     }
 }
-
+*/
 

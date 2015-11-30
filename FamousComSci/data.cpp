@@ -1,6 +1,10 @@
 #include "data.h"
 #include <fstream>
 #include <iostream>
+#include "scientist.h"
+#include <vector>
+
+using namespace std;
 
 Data::Data()
 {
@@ -25,7 +29,15 @@ void Data::init()
     }
     read.close();
 }
-
+/*
+void Data::print()
+{
+    for(int i = 0; i < vec.size(); i++)
+    {
+        cout << vec[i] << endl;
+    }
+}
+*/
 void Data::writeAllToFile()
 {
     ofstream write;
@@ -42,27 +54,27 @@ void Data::add(Scientist s)
     writeAllToFile();
 }
 
-void Data::print()
+bool Data::remove(string name)
 {
-    cout << "How would you like your list to be sorted? " << endl;
-    cout << "1. By name." << endl;
-    cout << "2. By sex." << endl;
-    cout << "3. By day of birth." << endl;
-    cout << "4. By day of death." << endl;
-
-    int choice(0);
-    cin >> choice;
-
-    switch(choice)
-    {
-        case 1:
-
-    }
-
-    for(unsigned int i = 0; i < vec.size(); i++)
-    {
-        cout << i << "." << endl;
-        cout << vec[i];
-        cout << endl;
-    }
+    for(unsigned int i = 0; i < vec.size(); i++){
+         if(vec[i].getName() == name){
+             vec.erase(vec.begin() + i);
+             writeAllToFile();
+             return true;
+         }
+    return false;
 }
+
+bool Data::remove_by_nr(unsigned int nr)
+{
+    if(nr < vec.size())
+    {
+        vec.erase(vec.begin() + nr);
+        writeAllToFile();
+        return true;
+    }
+    return false;
+
+}
+
+

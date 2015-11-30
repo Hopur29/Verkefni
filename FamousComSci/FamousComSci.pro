@@ -11,13 +11,13 @@ SOURCES += main.cpp \
     menu.cpp \
     scientist.cpp \
     manager.cpp \
-    data.cpp
+    data.cpp    \
 
 HEADERS += \
     menu.h \
     scientist.h \
     manager.h \
-    data.h
+    data.h    \
 
 DISTFILES +=
 

@@ -28,3 +28,7 @@ ostream& operator<< (ostream& out, const Scientist& s) {
 string Scientist::toFileFormat() {
     return name + ";" + sex + ";" + birthday + ";" + death;
 }
+
+string Scientist::getName(){
+    return name;
+}
