@@ -1,117 +1,53 @@
 #include "manager.h"
 #include <fstream>
 #include <iostream>
+#include <algorithm>
+#include "data.h"
 
 using namespace std;
 
 Manager::Manager()
 {
-
-}
-
-void Manager::init()
-{
-    ifstream read;
-    read.open("data.txt");
-    vector<Scientist> vec;
-    if (read.is_open())
-    {
-        Scientist s;
-        while(read >> s){
-            add(s);
-        }
-    }
-    else
-    {
-        cout << "There is no scientist on file." << endl;
-    }
-    read.close();
+    file.init();
 }
 
 void Manager::add(Scientist s)
-{    
-    vec.push_back(s);
-    writeAllToFile();
-}
-
-void Manager::writeAllToFile()
 {
-    ofstream write;
-    write.open("data.txt");
-    for(unsigned int i = 0; i < vec.size(); i++)
-    {
-        write << vec[i].toFileFormat() << endl;
-    }
-    write.close();
+    file.add(s);
 }
 
 void Manager::print()
 {
-    for(unsigned int i = 0; i < vec.size(); i++)
+    file.print();
+}
+
+void Manager::remove(string name)
+{
+    if(file.remove(name))
     {
-        cout << i << "." << endl;
-        cout << vec[i];
-        cout << endl;
+        cout << name << " has been removed." << endl;
+    }
+    else
+    {
+        cout << "there is no scientist named " << name
+             << " in this file." << endl;
     }
 }
 
-string Scientist::getName()
+void Manager::remove_by_nr(unsigned int nr)
 {
-    return name;
-}
-string Scientist::getSex()
-{
-    return sex;
-}
-
-void Manager::remove()
-{
-    int v;
-    cout << "would you like to remove by name or by number? " << endl;
-    cout << "press 1 for name." << endl;
-    cout << "press 2 for number." << endl;
-    cout << "any other number returns to menu." << endl;
-    cin >> v;
-
-
-    if(v == 1){
-       string name;
-       bool flag = false;
-
-       print();
-
-       cout << "insert the name of the scientist you would like to remove: ";
-       cin >> name;
-        for(unsigned int i = 0; i < vec.size(); i++){
-            if(vec[i].getName() == name){
-                vec.erase(vec.begin() + i);
-                flag = true;
-                writeAllToFile();
-                cout << name << " has been removed." << endl;
-            }
-        }
-            if(flag == false){
-            cout << "there is no scientist named " << name
-                 << " in this file." << endl;
-            }
-     }
-
-    else if(v == 2){
-        unsigned int i;
-         cout << "insert the number of the scientist you would like to remove: ";
-         cin >> i;
-         if(i < vec.size())
-         {
-             vec.erase(vec.begin() + i);
-             writeAllToFile();
-         }
-
-         else if(v != 1 || v != 2){
-             cout << "Returning to menu";
-         }
-     }
+    if(file.remove_by_nr(nr))
+    {
+        cout << "Scientist nr " << nr << " has been removed." << endl;
+    }
+    else
+    {
+        cout << "there is no scientist nr " << nr
+             << " in this file." << endl;
+    }
 }
 
+/*
 void Manager::search()
 {
     string name;
@@ -126,12 +62,13 @@ void Manager::search()
             flag = true;
             cout << i << ". " << endl;
             cout << vec[i] << endl;
-
         }
     }
-
     if(flag == false){
         cout << "there is no scientist named " << name
              << " in this file." << endl;
     }
 }
+*/
+
+

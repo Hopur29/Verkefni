@@ -3,10 +3,11 @@
 #include <iostream>
 #include "manager.h"
 
+using namespace std;
 
 Menu::Menu()
 {
-    manager.init();
+
 }
 
 void Menu::start()
@@ -41,7 +42,7 @@ void Menu::start()
                 remove();
                 break;
             case 4:
-                search();
+               // search();
                 break;
             case 5:
                 choice = MAX;
@@ -68,13 +69,38 @@ void Menu::print()
 
 void Menu::remove()
 {
+    int v;
+    cout << "would you like to remove by name or by number? " << endl;
+    cout << "press 1 for name." << endl;
+    cout << "press 2 for number." << endl;
+    cout << "any other number returns to menu." << endl;
+    cin >> v;
 
-    manager.remove();
+    print();
+    if(v == 1){
+       cout << "insert the name of the scientist you would like to remove: ";
+       string name;
+       cin >> name;
+       manager.remove(name);
+    }
+    else if(v == 2)
+    {
+         cout << "insert the number of the scientist you would like to remove: ";
+         unsigned int i;
+         cin >> i;
+         manager.remove_by_nr(i);
+    }
+    else {
+        cout << "Returning to menu";
+    }
+
+
+
 }
-
+/*
 void Menu::search()
 {
-
-
     manager.search();
 }
+*/
+

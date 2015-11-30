@@ -51,11 +51,13 @@ OBJECTS_DIR   = ./
 SOURCES       = ../FamousComSci/main.cpp \
 		../FamousComSci/menu.cpp \
 		../FamousComSci/scientist.cpp \
-		../FamousComSci/manager.cpp 
+		../FamousComSci/manager.cpp \
+		../FamousComSci/data.cpp 
 OBJECTS       = main.o \
 		menu.o \
 		scientist.o \
-		manager.o
+		manager.o \
+		data.o
 DIST          = ../../../Qt/5.5/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.5/clang_64/mkspecs/qdevice.pri \
 		../../../Qt/5.5/clang_64/mkspecs/features/device_config.prf \
@@ -177,6 +179,7 @@ DIST          = ../../../Qt/5.5/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.5/clang_64/mkspecs/features/qt_config.prf \
 		../../../Qt/5.5/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../Qt/5.5/clang_64/mkspecs/features/spec_post.prf \
+		../FamousComSci/.qmake.stash \
 		../../../Qt/5.5/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/5.5/clang_64/mkspecs/features/default_pre.prf \
 		../../../Qt/5.5/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -197,10 +200,12 @@ DIST          = ../../../Qt/5.5/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.5/clang_64/mkspecs/features/lex.prf \
 		../FamousComSci/FamousComSci.pro ../FamousComSci/menu.h \
 		../FamousComSci/scientist.h \
-		../FamousComSci/manager.h ../FamousComSci/main.cpp \
+		../FamousComSci/manager.h \
+		../FamousComSci/data.h ../FamousComSci/main.cpp \
 		../FamousComSci/menu.cpp \
 		../FamousComSci/scientist.cpp \
-		../FamousComSci/manager.cpp
+		../FamousComSci/manager.cpp \
+		../FamousComSci/data.cpp
 QMAKE_TARGET  = FamousComSci
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = FamousComSci
@@ -362,6 +367,7 @@ Makefile: ../FamousComSci/FamousComSci.pro ../../../Qt/5.5/clang_64/mkspecs/macx
 		../../../Qt/5.5/clang_64/mkspecs/features/qt_config.prf \
 		../../../Qt/5.5/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../Qt/5.5/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Qt/5.5/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/5.5/clang_64/mkspecs/features/default_pre.prf \
 		../../../Qt/5.5/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -504,6 +510,7 @@ Makefile: ../FamousComSci/FamousComSci.pro ../../../Qt/5.5/clang_64/mkspecs/macx
 ../../../Qt/5.5/clang_64/mkspecs/features/qt_config.prf:
 ../../../Qt/5.5/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../Qt/5.5/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../Qt/5.5/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../Qt/5.5/clang_64/mkspecs/features/default_pre.prf:
 ../../../Qt/5.5/clang_64/mkspecs/features/mac/default_pre.prf:
@@ -538,8 +545,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../FamousComSci/menu.h ../FamousComSci/scientist.h ../FamousComSci/manager.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../FamousComSci/main.cpp ../FamousComSci/menu.cpp ../FamousComSci/scientist.cpp ../FamousComSci/manager.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../FamousComSci/menu.h ../FamousComSci/scientist.h ../FamousComSci/manager.h ../FamousComSci/data.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../FamousComSci/main.cpp ../FamousComSci/menu.cpp ../FamousComSci/scientist.cpp ../FamousComSci/manager.cpp ../FamousComSci/data.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -597,6 +604,10 @@ scientist.o: ../FamousComSci/scientist.cpp ../FamousComSci/scientist.h
 manager.o: ../FamousComSci/manager.cpp ../FamousComSci/manager.h \
 		../FamousComSci/scientist.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o manager.o ../FamousComSci/manager.cpp
+
+data.o: ../FamousComSci/data.cpp ../FamousComSci/data.h \
+		../FamousComSci/scientist.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o data.o ../FamousComSci/data.cpp
 
 ####### Install
 
