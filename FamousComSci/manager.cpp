@@ -24,7 +24,7 @@ void Manager::init()
     }
     else
     {
-        cout << "Error opening file";
+        cout << "There is no scientist on file." << endl;
     }
     read.close();
 }
@@ -106,8 +106,8 @@ void Manager::search()
         if(vec[i].getName() == name){
             flag = true;
             cout << i << ". " << endl;
-            cout << vec[i];
-            cout << endl;
+            cout << vec[i] << endl;
+
         }
     }
     if(flag == false){
