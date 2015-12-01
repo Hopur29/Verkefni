@@ -7,6 +7,27 @@
 
 using namespace std;
 
+//
+bool compareByName(Scientist& lhs, Scientist& rhs)
+{
+    return lhs.getName() < rhs.getName();
+}
+
+bool compareBySex(Scientist& lhs, Scientist& rhs)
+{
+    return lhs.getSex() < rhs.getSex();
+}
+
+bool compareByDeath(Scientist& lhs, Scientist& rhs)
+{
+    return lhs.getDeath() < rhs.getDeath();
+}
+
+bool compareByBirthday(Scientist& lhs, Scientist& rhs)
+{
+    return lhs.getBirthday() < rhs.getBirthday();
+}
+
 Manager::Manager()
 {
     file.init();
@@ -81,27 +102,27 @@ void Manager::search(int v)
 void Manager::sortBirthday()
 {
     vector<Scientist> vec = file.getVector();
-    sort(vec.begin(), vec.end(), sortByBirthday);
+    sort(vec.begin(), vec.end(), compareByBirthday);
     file.setVector(vec);
 }
 
 void Manager::sortDeath()
 {
     vector<Scientist> vec = file.getVector();
-    sort(vec.begin(), vec.end(), sortByDeath);
+    sort(vec.begin(), vec.end(), compareByDeath);
     file.setVector(vec);
 }
 
 void Manager::sortSex()
 {
     vector<Scientist> vec = file.getVector();
-    sort(vec.begin(), vec.end(), sortBySex);
+    sort(vec.begin(), vec.end(), compareBySex);
     file.setVector(vec);
 }
 
 void Manager::sortName()
 {
     vector<Scientist> vec = file.getVector();
-    sort(vec.begin(), vec.end(), sortByName);
+    sort(vec.begin(), vec.end(), compareByName);
     file.setVector(vec);
 }
