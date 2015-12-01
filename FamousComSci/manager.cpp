@@ -7,31 +7,37 @@
 
 using namespace std;
 
-//
+
+// this a help function for the function sortName, which compares two names of scientists, alphabetacally
 bool compareByName(Scientist& lhs, Scientist& rhs)
 {
     return lhs.getName() < rhs.getName();
 }
 
+// this a help function for the function sortSex, which compares sex of scientists, alphabetacally
 bool compareBySex(Scientist& lhs, Scientist& rhs)
 {
     return lhs.getSex() < rhs.getSex();
 }
 
+// this a help function for the function sortName, which compares death year of two scientists
 bool compareByDeath(Scientist& lhs, Scientist& rhs)
 {
     return lhs.getDeath() < rhs.getDeath();
 }
 
+// this a help function for the function sortBirthday, which compares birth year of two scientists
 bool compareByBirthday(Scientist& lhs, Scientist& rhs)
 {
     return lhs.getBirthday() < rhs.getBirthday();
 }
 
+
 Manager::Manager()
 {
     file.init();
 }
+
 
 void Manager::add(Scientist s)
 {
@@ -55,6 +61,7 @@ void Manager::remove(string name)
              << " in this file." << endl;
     }
 }
+
 
 void Manager::remove_by_nr(unsigned int nr)
 {
@@ -99,6 +106,7 @@ void Manager::search(int v)
     }
 }
 
+
 void Manager::sortBirthday()
 {
     vector<Scientist> vec = file.getVector();
@@ -106,12 +114,14 @@ void Manager::sortBirthday()
     file.setVector(vec);
 }
 
+
 void Manager::sortDeath()
 {
     vector<Scientist> vec = file.getVector();
     sort(vec.begin(), vec.end(), compareByDeath);
     file.setVector(vec);
 }
+
 
 void Manager::sortSex()
 {
