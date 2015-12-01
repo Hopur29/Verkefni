@@ -97,6 +97,7 @@ void Menu::remove()
     int v;
     cout << "would you like to remove by name or by number? " << endl;
     cout << "press 1 for name." << endl;
+    cout << "press 2 for number." << endl;
     cout << "any other number returns to menu." << endl;
     cin >> v;
 
@@ -134,6 +135,7 @@ void Menu::search()
        cin >> v;
 
     manager.search(v);
+
 }
 
 
