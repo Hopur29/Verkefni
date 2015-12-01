@@ -118,11 +118,7 @@ void Menu::remove()
     else {
         cout << "Returning to menu";
     }
-
-
-
 }
-
 void Menu::search()
 {
     int v;
@@ -137,5 +133,3 @@ void Menu::search()
     manager.search(v);
 
 }
-
-
